@@ -16,7 +16,8 @@ namespace InterfaceTest
 
         private void SplitHorizontally_Click(object sender, RoutedEventArgs e)
         {
-            ContentControl contentControl = (((sender as MenuItem).Parent as ContextMenu).PlacementTarget as DockPanel).Parent as ContentControl;
+            TabItem tabItem = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as TabItem;
+            ContentControl contentControl = ((tabItem.Parent as TabControl).Parent as DockPanel).Parent as ContentControl;
             if (contentControl is null) return;
             Grid grid = contentControl.Parent as Grid;
             grid.Children.Remove(contentControl);
@@ -33,7 +34,7 @@ namespace InterfaceTest
             splitter.VerticalAlignment = VerticalAlignment.Stretch;
 
             ContentControl newControl = new ContentControl();
-            newControl.Content = FindResource("Border");
+            newControl.Content = FindResource("DockPanel");
 
             Grid.SetColumn(contentControl, 0);
             Grid.SetRow(contentControl, 0);
@@ -46,10 +47,10 @@ namespace InterfaceTest
 
             grid.Children.Add(newGrid);
         }
-
         private void SplitVertically_Click(object sender, RoutedEventArgs e)
         {
-            ContentControl contentControl = (((sender as MenuItem).Parent as ContextMenu).PlacementTarget as DockPanel).Parent as ContentControl;
+            TabItem tabItem = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as TabItem;
+            ContentControl contentControl = ((tabItem.Parent as TabControl).Parent as DockPanel).Parent as ContentControl;
             if (contentControl is null) return;
             Grid grid = contentControl.Parent as Grid;
             grid.Children.Remove(contentControl);
@@ -66,7 +67,7 @@ namespace InterfaceTest
             splitter.VerticalAlignment = VerticalAlignment.Stretch;
 
             ContentControl newControl = new ContentControl();
-            newControl.Content = FindResource("Border");
+            newControl.Content = FindResource("DockPanel");
 
             Grid.SetRow(contentControl, 0);
             Grid.SetColumn(contentControl, 0);
@@ -78,6 +79,16 @@ namespace InterfaceTest
             newGrid.Children.Add(newControl);
 
             grid.Children.Add(newGrid);
+        }
+
+        private void AddTab_Click(object sender, RoutedEventArgs e)
+        {
+            TabItem tabItem = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as TabItem;
+        }
+
+        private void RemoveTab_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

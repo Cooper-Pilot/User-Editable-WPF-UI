@@ -3,18 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="DockPanel Example" Height="300" Width="500">
     <Window.Resources>
-        <ContextMenu x:Key="SplitMenu" >
-            <MenuItem Header="Split horizontally" Click="SplitHorizontally_Click" />
-            <MenuItem Header="Split vertically" Click="SplitVertically_Click" />
+        <ContextMenu x:Key="TabMenu" >
+            <MenuItem Header="Split Horizontally" Click="SplitHorizontally_Click" />
+            <MenuItem Header="Split Vertically" Click="SplitVertically_Click" />
+            <MenuItem Header="Add Tab" Click="AddTab_Click" />
+            <MenuItem Header="Remove Tab" Click="RemoveTab_Click" />
         </ContextMenu>
-        <DockPanel x:Key="Border" x:Shared="False" ContextMenu="{StaticResource SplitMenu}">
-            <TabControl>
-                <TabItem Header="Test"></TabItem>
+        <DockPanel x:Key="DockPanel" x:Shared="False">
+            <TabControl Grid.Row="0">
+                <TabItem Header="Tab 1" ContextMenu="{StaticResource TabMenu}">
+                    <!-- Tab 1 content here -->
+                </TabItem>
             </TabControl>
         </DockPanel>
     </Window.Resources>
     <Grid x:Name="LayoutRoot" Background="White" ShowGridLines="True">
-        <ContentControl Content="{StaticResource Border}" Grid.Row="0"/>
+        <ContentControl Content="{StaticResource DockPanel}" Grid.Row="0"/>
     </Grid>
 </Window>
 
