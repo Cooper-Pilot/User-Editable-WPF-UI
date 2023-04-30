@@ -84,11 +84,25 @@ namespace InterfaceTest
         private void AddTab_Click(object sender, RoutedEventArgs e)
         {
             TabItem tabItem = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as TabItem;
+            if (tabItem.Parent is TabControl tabControl)
+            {
+                TabItem newTab = new TabItem()
+                {
+                    ContextMenu = FindResource("TabMenu") as ContextMenu,
+                    Header = "New Tab"
+                };
+                tabControl.Items.Add(newTab);
+            }
         }
 
         private void RemoveTab_Click(object sender, RoutedEventArgs e)
         {
-
+            TabItem tabItem = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as TabItem;
+            if (tabItem.Parent is TabControl tabControl)
+            {
+                if(tabControl.Items.Count > 1)
+                    tabControl.Items.Remove(tabItem);
+            }
         }
     }
 }
