@@ -9,7 +9,6 @@ namespace InterfaceTest
         {
             InitializeComponent();
         }
-
         private void SplitHorizontally_Click(object sender, RoutedEventArgs e)
         {
             TabItem tabItem = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as TabItem;
@@ -76,7 +75,6 @@ namespace InterfaceTest
 
             grid.Children.Add(newGrid);
         }
-
         private void AddTab_Click(object sender, RoutedEventArgs e)
         {
             TabItem tabItem = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as TabItem;
@@ -90,7 +88,6 @@ namespace InterfaceTest
                 tabControl.Items.Add(newTab);
             }
         }
-
         private void RemoveTab_Click(object sender, RoutedEventArgs e)
         {
             TabItem tabItem = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as TabItem;
@@ -119,7 +116,6 @@ namespace InterfaceTest
                     MergeSplit(grid, Grid.ColumnProperty, 0);
             }
         }
-
         private void MergeSplit(Grid grid, DependencyProperty gridDirectionProperty, int propertyKeepValue)
         {
             UIElement kept = null;

@@ -12,7 +12,7 @@
         <DockPanel x:Key="DockPanel" x:Shared="False">
             <TabControl Grid.Row="0">
                 <TabItem Header="Tab 1" ContextMenu="{StaticResource TabMenu}">
-                    <!-- Tab 1 content here -->
+                    <ContentControl/>
                 </TabItem>
             </TabControl>
         </DockPanel>
